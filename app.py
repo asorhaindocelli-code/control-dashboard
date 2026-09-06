@@ -17,4 +17,4 @@ def settings():
     return render_template("settings.html")
 
 if __name__=="__main__":
-    app.run(debig=True)
+    app.run(debug=True)
