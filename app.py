@@ -1,10 +1,16 @@
 from flask import Flask, render_template, redirect, url_for
-
+import pihole
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    stats = pihole.call()
+    return render_template("home.html",
+                           queries_today =stats[0],
+                           queries_blocked = stats[1],
+                           percent_blocked=stats[2],
+                           domains_blocked = stats[3]
+                        )
 
 @app.route("/login")
 def login():

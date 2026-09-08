@@ -1,29 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard Layout</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Layout</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
 
-</head>
+  <body>
+    <div class="container">
+      <div class="header"></div>
 
-<body>
-<div class="container">
-
-        <div class="header"></div>
-
-        <div class="main">
-
-            <div class="left"></div>
-
-            <div class="right">
-                <div class="right-top"></div>
-                <div class="right-bottom"></div>
-            </div>
-
+      <div class="main">
+        <div class="left">
+          <h1>Pi Hole Stats</h1>
+          <p>queries today:{{queries_today}}</p>
+          <p>queries_blocked:{{queries_blocked}}</p>
+          <p>percent_blocked:{{percent_blocked}}</p>
+          <p>domains_blocked:{{domains_blocked}}</p>
         </div>
 
+        <div class="right">
+          <div class="right-top"></div>
+          <div class="right-bottom"></div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

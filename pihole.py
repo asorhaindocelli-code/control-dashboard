@@ -6,19 +6,17 @@ def call():
 
     while condition == True:
         ip = input("Please enter your ip address: ")    
-        url = f"http://{ip}/api/auth"
+        url = f"http://{ip}/api"
         password = input("Please enter your password: ")
         try:
             response = requests.post(url, json={"password": password})
             sid = response.json()["session"]["sid"]
 
-            stats_url = f"http://{ip}/api/stats/summary"
             headers = {"X-FTL-SID": sid}
-            stats_response = requests.get(stats_url, headers=headers)
+            stats_response = requests.get(f"{url}/stats/summary", headers=headers)
             info = stats_response.json()
             condition = False
     
-
         except:
             print("Ip address or password was incorrect, please try again...")
             condition = True
@@ -30,4 +28,3 @@ def call():
     domains_blocked = info["gravity"]["domains_being_blocked"]
     return queries_today, queries_blocked, percent_blocked, domains_blocked
     
-call()
